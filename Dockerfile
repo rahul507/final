@@ -9,7 +9,6 @@ RUN pip install virtualenv
 RUN virtualenv /flask
 ENV PATH="/flask/bin:$PATH"
 RUN pip install -r requirements.txt
-RUN ip address
 
 EXPOSE 5000
 
