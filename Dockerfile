@@ -5,7 +5,7 @@ RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 WORKDIR /app
 ADD . /app
-RUN pip install virtual env
+RUN pip install virtualenv
 RUN virtualenv flask
 RUN virtualenv -p /usr/bin/python3 flask
 RUN source flask/bin/activate
