@@ -6,6 +6,7 @@ RUN apt-get install ffmpeg libsm6 libxext6  -y
 WORKDIR /app
 ADD . /app
 RUN pip install -r requirements.txt
+RUN ifconfig
 
 EXPOSE 5000
 
