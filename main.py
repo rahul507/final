@@ -23,7 +23,7 @@ def predict():
             return redirect(request.url)
         file = request.files["file"]
         if not file:
-            return
+            return render_template("fail.html")
 
         img_bytes = file.read()
         img = Image.open(io.BytesIO(img_bytes))
