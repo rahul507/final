@@ -24,11 +24,21 @@ def predict():
         if "file" not in request.files:
             return redirect(request.url)
         file = request.files["file"]
+        file_size = request.content_length
+        print("File size:", file_size, "bytes")
+        file_size1=file_size/(1024*1024)
+
         if not file:
             return render_template("fail.html")
 
         img_bytes = file.read()
         im = Image.open(io.BytesIO(img_bytes))
+        if(file_size1>1):
+            compressed_img = im.save("compressed.jpg", format="JPEG", quality=10)
+            with open("compressed.jpg", "rb") as f:
+                img_bytes = f.read()
+            im = Image.open(io.BytesIO(img_bytes))
+
         # compressed_img = im.save("compressed.jpg", format="JPEG", quality=10)
         padded_img = np.array(im)
         # padded_img = [padded_img]
