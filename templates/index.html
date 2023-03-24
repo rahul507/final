@@ -18,7 +18,7 @@
     </style>
     <link rel="stylesheet" href="/static/style.css">
 
-    <title>yolov5 object detection</title>
+    <title>Icon Detection</title>
   </head>
   <body class="text-center">
     <form class="form-signin" method=post enctype=multipart/form-data>
@@ -33,9 +33,9 @@
     <script type="text/javascript">
       $('#inputfile').bind('change', function() {
           let fileSize = this.files[0].size/1024/1024; // this gives in MB
-          if (fileSize > 1) {
+          if (fileSize > 10) {
             $("#inputfile").val(null);
-            alert('file is too big. images more than 1MB are not allowed')
+            alert('file is too big. images more than 10MB are not allowed')
             return
           }
 
