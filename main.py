@@ -29,12 +29,13 @@ def predict():
 
         img_bytes = file.read()
         im = Image.open(io.BytesIO(img_bytes))
+        # compressed_img = im.save("compressed.jpg", format="JPEG", quality=10)
         padded_img = np.array(im)
         # padded_img = [padded_img]
         old_image_height, old_image_width, channels = padded_img.shape
         # print(old_image_width)
         new_image_height = old_image_height
-        new_image_width = old_image_width + 600
+        new_image_width = old_image_width + 750
         color = (255,255,255)
         result = np.full((new_image_height,new_image_width, channels), color, dtype=np.uint8)
         x_center = (new_image_width - old_image_width) // 2
@@ -49,7 +50,7 @@ def predict():
         results.render()  # updates results.imgs with boxes and labels
         now_time = datetime.datetime.now().strftime(DATETIME_FORMAT)
         img_savename = f"static/{now_time}.png"
-        Image.fromarray(results.ims[0]).save(img_savename)
+        Image.fromarray(results.ims[0]).save(img_savename,format="JPEG", quality=10)
         return redirect(img_savename)
 
     return render_template("index.html")
