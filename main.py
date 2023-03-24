@@ -61,6 +61,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)  # force_reload = recache latest code
-    model = torch.hub.load('ultralytics/yolov5','custom', path='C:/Users/garvi/OneDrive/Desktop/YOLO Training/yolov5/run_120/weights/best.pt')
+    model = torch.hub.load('ultralytics/yolov5','custom', path='best.pt')
     model.eval()
     app.run(host="0.0.0.0", port=args.port)  # debug=True causes Restarting with stat
