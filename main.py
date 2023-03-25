@@ -60,7 +60,7 @@ def predict():
         results.render()  # updates results.imgs with boxes and labels
         now_time = datetime.datetime.now().strftime(DATETIME_FORMAT)
         img_savename = f"static/{now_time}.png"
-        Image.fromarray(results.ims[0]).save(img_savename,format="JPEG", quality=10)
+        Image.fromarray(results.ims[0]).save(img_savename)
         return redirect(img_savename)
 
     return render_template("index.html")
