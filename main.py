@@ -12,8 +12,10 @@ import numpy as np
 
 import torch
 from flask import Flask, render_template, request, redirect, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 DATETIME_FORMAT = "%Y-%m-%d_%H-%M-%S-%f"
 
