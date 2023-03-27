@@ -33,6 +33,7 @@ def predict():
 
         img_bytes = file.read()
         im = Image.open(io.BytesIO(img_bytes))
+        # resize=im.resize((540,960))
         if(file_size1>1):
             compressed_img = im.save("compressed.jpg", format="JPEG", quality=10)
             with open("compressed.jpg", "rb") as f:
@@ -41,9 +42,12 @@ def predict():
 
         # compressed_img = im.save("compressed.jpg", format="JPEG", quality=10)
         padded_img = np.array(im)
+        padded_img_3ch = padded_img[:, :, :3]
         # padded_img = [padded_img]
-        old_image_height, old_image_width, channels = padded_img.shape
+        old_image_height, old_image_width, channels = padded_img_3ch.shape
+        # print(old_image_height)
         # print(old_image_width)
+        # print(channels)
         new_image_height = old_image_height
         new_image_width = old_image_width + 750
         color = (255,255,255)
@@ -53,7 +57,7 @@ def predict():
 
 # copy img image into center of result image
         result[y_center:y_center+old_image_height, 
-        x_center:x_center+old_image_width] = padded_img
+        x_center:x_center+old_image_width] = padded_img_3ch
         pil_image = Image.fromarray(result)
         results = model([result])
 
