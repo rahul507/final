@@ -9,6 +9,7 @@ RUN pip install virtualenv
 RUN virtualenv /flask
 ENV PATH="/flask/bin:$PATH"
 RUN pip install -r requirements.txt
+RUN pip install git+https://github.com/ultralytics/yolov5
 
 EXPOSE 5000
 
